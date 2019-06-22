@@ -1,0 +1,22 @@
+<div>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Question" name="title" [(ngModel)]="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Further explanation" name="content" [(ngModel)]="content"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Your name" name="name" [(ngModel)]="name">
+    </mat-form-field>
+  </form>
+  <button mat-button (click)="addQuestion(name, title, content)">Submit</button>
+
+  <ul>
+    <li *ngFor="let question of questions$ | async">
+      {{question.title}}
+    </li>
+  </ul>
+</div>
