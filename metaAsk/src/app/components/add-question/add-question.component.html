@@ -1,0 +1,16 @@
+<div>
+  <form>
+    <mat-form-field>
+      <input matInput placeholder="Question" name="title" [(ngModel)]="title">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Further explanation" name="content" [(ngModel)]="content"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Your name" name="name" [(ngModel)]="name">
+    </mat-form-field>
+    <button mat-raised-button (click)="addQuestion(name, title, content)">Submit</button>
+  </form>
+</div>

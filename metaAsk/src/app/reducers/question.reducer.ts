@@ -26,6 +26,8 @@ export function questionReducer(
     }
     case QuestionActions.REMOVE_QUESTION:
       return questionAdapter.removeOne(action.payload, state);
+    case QuestionActions.LOAD_QUESTIONS_SUCCESS:
+      return questionAdapter.addMany(action.payload, state);
     default:
       return state;
   }
