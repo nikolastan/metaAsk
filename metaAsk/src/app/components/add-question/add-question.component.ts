@@ -27,13 +27,14 @@ export class AddQuestionComponent implements OnInit {
   }
 
   addQuestion(name, title, content) {
-    const question: Question = {
-      name,
-      title,
-      content,
-      id: this.generateUUID()
+    const id = this.generateUUID();
+    const payload = {
+      name: name,
+      title: title,
+      content: content,
+      id: id
     };
-    this.store.dispatch(new QuestionActions.AddQuestion(question));
+    this.store.dispatch(new QuestionActions.AddQuestion(payload));
 
     this.name = "";
     this.title = "";

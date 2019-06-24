@@ -24,4 +24,14 @@ export class QuestionEffects {
         );
     })
   );
+
+  @Effect()
+  addQuestion$ = this.actions$.pipe(
+    ofType<QuestionActions.AddQuestion>(QuestionActions.ADD_QUESTION),
+    switchMap(action => {
+      return this.questionService
+        .addQuestion(action.payload)
+        .pipe(map(() => new QuestionActions.LoadQuestions()));
+    })
+  );
 }

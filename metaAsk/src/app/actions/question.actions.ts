@@ -3,6 +3,7 @@ import { Action } from "@ngrx/store";
 import { Question } from "./../models/question.model";
 
 export const ADD_QUESTION = "[QUESTION] Add";
+export const ADD_QUESTION_SUCCESS = "[QUESTION] Add_Success";
 export const REMOVE_QUESTION = "[QUESTION] Remove";
 export const LOAD_QUESTIONS = "[QUESTIONS] Load";
 export const LOAD_QUESTIONS_SUCCESS = "[QUESTIONS] Load_Success";
@@ -10,7 +11,7 @@ export const LOAD_QUESTIONS_SUCCESS = "[QUESTIONS] Load_Success";
 export class AddQuestion implements Action {
   readonly type = ADD_QUESTION;
 
-  constructor(public payload: Question) {}
+  constructor(public payload: { name; title; content; id }) {}
 }
 
 export class RemoveQuestion implements Action {

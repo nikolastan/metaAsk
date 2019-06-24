@@ -13,7 +13,16 @@ export class QuestionService {
     return this.http.get<Question[]>("http://localhost:3000/questions");
   }
 
-  addQuestion(payload: Question): Observable<Question> {
-    return this.http.post<Question>("http://localhost:3000/questions", payload);
+  addQuestion(payload: any): Observable<Question> {
+    const question: Question = new Question(
+      payload.name,
+      payload.title,
+      payload.content,
+      payload.id
+    );
+    return this.http.post<Question>(
+      "http://localhost:3000/questions",
+      question
+    );
   }
 }
