@@ -1,0 +1,9 @@
+<div>
+  <ul>
+    <li *ngFor="let answer of answers$ | async">
+      <div *ngIf="answer.questionId==questionId">
+        {{answer.answer}}
+      </div>
+    </li>
+  </ul>
+</div>

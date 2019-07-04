@@ -13,14 +13,20 @@ import { MatButtonModule } from "@angular/material/button";
 import { FormsModule } from "@angular/forms";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./reducers";
-import { QuestionModule } from "./modules/question/question.module";
+//import { QuestionModule } from "./modules/question/question.module";
 import { AddQuestionComponent } from "./components/add-question/add-question.component";
 import { EffectsModule } from "@ngrx/effects";
 import { effects } from "./effects";
 import { HttpClientModule } from "@angular/common/http";
+import { AnswersComponent } from "./components/answers/answers.component";
 
 @NgModule({
-  declarations: [AppComponent, QuestionsComponent, AddQuestionComponent],
+  declarations: [
+    AppComponent,
+    QuestionsComponent,
+    AddQuestionComponent,
+    AnswersComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -30,7 +36,7 @@ import { HttpClientModule } from "@angular/common/http";
     MatButtonModule,
     FormsModule,
     HttpClientModule,
-    QuestionModule,
+    //QuestionModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({

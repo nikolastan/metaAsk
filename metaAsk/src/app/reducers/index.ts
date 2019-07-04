@@ -3,16 +3,33 @@ import {
   createFeatureSelector,
   ActionReducerMap
 } from "@ngrx/store";
-import * as fromQuestion from "./question.reducer";
+import * as Reducers from "./reducer";
+import { AppState } from "../app.state";
 
-export const reducers: ActionReducerMap<any> = {
-  question: fromQuestion.questionReducer
+export interface State {
+  state: AppState;
+}
+
+export const reducers: ActionReducerMap<State> = {
+  state: Reducers.Reducer
 };
 
-export const selectQuestionState = createFeatureSelector<fromQuestion.State>(
-  "question"
+export const selectStateModule = createFeatureSelector<AppState>("state");
+
+export const selectQuestionState = createSelector(
+  selectStateModule,
+  Reducers.selectQuestionState
+);
+export const selectAnswerState = createSelector(
+  selectStateModule,
+  Reducers.selectAnswerState
 );
 
-export const {
-  selectAll: selectAllQuestions
-} = fromQuestion.questionAdapter.getSelectors(selectQuestionState);
+export const selectAllQuestions = createSelector(
+  selectQuestionState,
+  Reducers.selectAllQuestions
+);
+export const selectAllAnswers = createSelector(
+  selectAnswerState,
+  Reducers.selectAllAnswers
+);

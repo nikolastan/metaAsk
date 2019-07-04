@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { AppState } from "src/app/app.state";
 import { Question } from "src/app/models/question.model";
 import { UUID } from "angular2-uuid";
-import * as QuestionActions from "../../actions/question.actions";
+import * as QuestionActions from "../../actions/actions";
 
 @Component({
   selector: "app-add-question",

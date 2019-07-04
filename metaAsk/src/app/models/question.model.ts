@@ -1,3 +1,5 @@
+import { Answer } from "./answer.model";
+
 export class Question {
   name: string;
   title: string;

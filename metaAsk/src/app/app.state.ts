@@ -1,5 +1,6 @@
-import { Question } from "./models/question.model";
+import { QuestionState, AnswerState } from "./reducers/reducer";
 
 export interface AppState {
-  readonly questions: Question[];
+  questions: QuestionState;
+  answers: AnswerState;
 }
