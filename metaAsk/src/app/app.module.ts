@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 
@@ -10,7 +10,8 @@ import { QuestionsComponent } from "./components/questions/questions.component";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
-import { FormsModule } from "@angular/forms";
+import { MatListModule } from "@angular/material/list";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./reducers";
 //import { QuestionModule } from "./modules/question/question.module";
@@ -35,7 +36,9 @@ import { AnswersComponent } from "./components/answers/answers.component";
     MatCardModule,
     MatButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
+    MatListModule,
     //QuestionModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
@@ -45,6 +48,7 @@ import { AnswersComponent } from "./components/answers/answers.component";
     })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

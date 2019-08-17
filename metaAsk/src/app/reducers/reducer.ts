@@ -52,10 +52,7 @@ export function Reducer(
     case Actions.LOAD_ANSWERS_SUCCESS:
       return {
         ...state,
-        answers: [
-          ...state.answers, //fix state of non-return answers correctly
-          answerAdapter.addMany(action.payload, state.answers)
-        ]
+        answers: answerAdapter.addMany(action.payload, state.answers)
       };
     default:
       return state;

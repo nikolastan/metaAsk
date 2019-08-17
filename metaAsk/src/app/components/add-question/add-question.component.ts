@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { AppState } from "src/app/app.state";
-import { Question } from "src/app/models/question.model";
+/* import { Question } from "src/app/models/question.model"; */
 import { UUID } from "angular2-uuid";
+import { FormControl, Validators } from "@angular/forms";
 import * as QuestionActions from "../../actions/actions";
 
 @Component({
@@ -12,13 +13,27 @@ import * as QuestionActions from "../../actions/actions";
 })
 export class AddQuestionComponent implements OnInit {
   @Input()
-  name: string | "Anonymous";
+  name: string;
   @Input()
   title: string;
   @Input()
   content: string;
+  @Output() formSubmit = new EventEmitter<boolean>();
+
+  titleInp = new FormControl("", [
+    Validators.required,
+    Validators.minLength(10)
+  ]);
+  contentInp = new FormControl("", [
+    Validators.required,
+    Validators.minLength(50)
+  ]);
 
   constructor(private store: Store<AppState>) {}
+
+  onFormSubmit() {
+    this.formSubmit.emit(true);
+  }
 
   ngOnInit() {}
 
@@ -35,10 +50,6 @@ export class AddQuestionComponent implements OnInit {
       id: id
     };
     this.store.dispatch(new QuestionActions.AddQuestion(payload));
-
-    this.name = "";
-    this.title = "";
-    this.content = "";
   }
 
   removeQuestion(number) {

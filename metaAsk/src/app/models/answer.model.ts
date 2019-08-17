@@ -1,5 +1,5 @@
 export class Answer {
-  questionId: number;
+  questionId: string;
   answer: string;
   id: string;
 

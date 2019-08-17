@@ -8,6 +8,11 @@ import { Component, OnInit } from "@angular/core";
 export class AppComponent {
   title = "metaAsk";
   isAddVisible: boolean;
+  formSubmit: boolean;
+
+  getFormSubmit(formSubmit) {
+    if (formSubmit) this.isAddVisible = false;
+  }
 
   ngOnInit() {
     this.isAddVisible = false;

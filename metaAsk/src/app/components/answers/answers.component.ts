@@ -5,6 +5,7 @@ import { Store, createSelector, select } from "@ngrx/store";
 import * as QuestionActions from "../../actions/actions";
 import { selectAllAnswers } from "src/app/reducers/";
 import { State } from "src/app/reducers";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-answers",
@@ -21,5 +22,13 @@ export class AnswersComponent implements OnInit {
   ngOnInit() {
     this.answers$ = this.store.select(selectAllAnswers);
     this.store.dispatch(new QuestionActions.LoadAnswers(this.questionId));
+  }
+
+  answersForQuestion() {
+    return this.answers$.pipe(
+      map(answers =>
+        answers.filter(answer => answer.questionId == this.questionId)
+      )
+    );
   }
 }

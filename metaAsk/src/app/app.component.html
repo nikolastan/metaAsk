@@ -3,11 +3,12 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <button *ngIf="isAddVisible; else elseBlock" (click)="toggleAddVisible()" mat-raised-button>Hide Form</button>
+  <button *ngIf="isAddVisible; else elseBlock" (click)="toggleAddVisible()" mat-raised-button>Hide
+    Form</button>
   <ng-template #elseBlock><button (click)="toggleAddVisible()" mat-raised-button>Add a new question...</button>
   </ng-template>
 </div>
-<app-add-question *ngIf="isAddVisible"></app-add-question>
+<app-add-question *ngIf="isAddVisible" (formSubmit)="getFormSubmit($event)"></app-add-question>
 <app-questions></app-questions>
 
 <router-outlet></router-outlet>

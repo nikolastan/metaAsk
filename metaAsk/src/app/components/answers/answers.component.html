@@ -1,9 +1,9 @@
 <div>
-  <ul>
-    <li *ngFor="let answer of answers$ | async">
-      <div *ngIf="answer.questionId==questionId">
+  <mat-list>
+    <mat-list-item *ngFor="let answer of answersForQuestion() | async">
+      <ng-container>
         {{answer.answer}}
-      </div>
-    </li>
-  </ul>
+      </ng-container>
+    </mat-list-item>
+  </mat-list>
 </div>

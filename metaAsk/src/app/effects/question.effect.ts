@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 import { Effect, Actions, ofType } from "@ngrx/effects";
-import { switchMap, map, take } from "rxjs/operators";
+import { switchMap, map, take, concatMap } from "rxjs/operators";
 
 import * as QuestionActions from "../actions/actions";
 import * as FromServices from "../services/question.service";
@@ -38,7 +38,7 @@ export class QuestionEffects {
   @Effect()
   loadAnswers$ = this.actions$.pipe(
     ofType<QuestionActions.LoadAnswers>(QuestionActions.LOAD_ANSWERS),
-    switchMap(action => {
+    concatMap(action => {
       return this.questionService
         .getAnswers(action.questionId)
         .pipe(
