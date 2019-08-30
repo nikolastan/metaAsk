@@ -1,42 +1,13 @@
 {
   "questions": [{
-      "name": "Lazar",
-      "title": "Nesto",
-      "content": "Drugo",
-      "id": "1"
-    },
-    {
-      "name": "Zeze",
-      "title": "Keke",
-      "content": "Lele",
-      "id": "20c1e510-9ebb-2531-1fab-c521f4e3b3b9"
-    },
-    {
-      "name": "Zez",
-      "title": "Kek",
-      "content": "Lel",
-      "id": "2"
-    }
-  ],
+    "name": "Nikola",
+    "title": "How to set production environment variable in React app? (hosted on Netlify)",
+    "content": "I was wondering how I can set environment variable in React to hid my API key?\n\nI am hosting the app on Netlify so I am not sure if that matters. Thanks in advance!",
+    "id": "5e79acac-a149-37ae-3c0c-a0faec5ceb08"
+  }],
   "answers": [{
-      "questionId": "1",
-      "answer": "xD",
-      "id": "1"
-    },
-    {
-      "questionId": "2",
-      "answer": "lol",
-      "id": "2"
-    },
-    {
-      "questionId": "1",
-      "answer": "xD#2",
-      "id": "3"
-    },
-    {
-      "questionId": "1",
-      "answer": "xD#3",
-      "id": "4"
-    }
-  ]
+    "questionId": "5e79acac-a149-37ae-3c0c-a0faec5ceb08",
+    "answer": "I've done extensive research and if you want to set variables that are available in all GUI applications, your only option is /etc/launchd.conf.",
+    "id": "a684d1a5-db8d-186b-c70e-712c9eef5fa2"
+  }]
 }

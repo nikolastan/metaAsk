@@ -5,7 +5,7 @@ import { Store, createSelector, select } from "@ngrx/store";
 import * as QuestionActions from "../../actions/actions";
 import { selectAllAnswers } from "src/app/reducers/";
 import { State } from "src/app/reducers";
-import { map } from "rxjs/operators";
+import { map, filter } from "rxjs/operators";
 
 @Component({
   selector: "app-answers",
@@ -26,9 +26,14 @@ export class AnswersComponent implements OnInit {
 
   answersForQuestion() {
     return this.answers$.pipe(
-      map(answers =>
-        answers.filter(answer => answer.questionId == this.questionId)
-      )
+      map(answers => {
+        answers = answers.filter(
+          answer => answer.questionId == this.questionId
+        );
+        if (answers == undefined || answers.length == 0) {
+          return false;
+        } else return answers;
+      })
     );
   }
 }

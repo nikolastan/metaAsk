@@ -5,8 +5,9 @@
     </mat-form-field>
 
     <mat-form-field>
-      <textarea matInput placeholder="Further explanation" name="content" [(ngModel)]="content"
-        [formControl]="contentInp" required></textarea>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        placeholder="Further explanation" name="content" [(ngModel)]="content" [formControl]="contentInp"
+        required></textarea>
     </mat-form-field>
 
     <mat-form-field>

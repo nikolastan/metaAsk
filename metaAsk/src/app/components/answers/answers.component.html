@@ -1,6 +1,9 @@
 <div>
   <mat-list>
+    <h3 mat-subheader>Answers</h3>
+    <h2 mat-subheader *ngIf="!(answersForQuestion() | async)">No answers yet!</h2>
     <mat-list-item *ngFor="let answer of answersForQuestion() | async">
+      <mat-icon mat-list-icon>play_arrow</mat-icon>
       <ng-container>
         {{answer.answer}}
       </ng-container>

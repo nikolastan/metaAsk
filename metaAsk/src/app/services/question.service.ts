@@ -32,4 +32,13 @@ export class QuestionService {
       question
     );
   }
+
+  addAnswer(payload: any): Observable<Answer> {
+    const answer: Answer = new Answer(
+      payload.questionId,
+      payload.answer,
+      payload.id
+    );
+    return this.http.post<Answer>("http://localhost:3000/answers", answer);
+  }
 }

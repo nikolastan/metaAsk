@@ -8,6 +8,8 @@ export const ADD_QUESTION_SUCCESS = "[QUESTION] Add_Success";
 export const REMOVE_QUESTION = "[QUESTION] Remove";
 export const LOAD_QUESTIONS = "[QUESTIONS] Load";
 export const LOAD_QUESTIONS_SUCCESS = "[QUESTIONS] Load_Success";
+export const ADD_ANSWER = "[ANSWER] Add";
+export const ADD_ANSWER_SUCCESS = "[ANSWER] Add_Success";
 export const LOAD_ANSWERS = "[ANSWERS] Load";
 export const LOAD_ANSWERS_SUCCESS = "[ANSWERS] Load_Success";
 
@@ -33,6 +35,16 @@ export class LoadQuestionsSuccess implements Action {
   readonly type = LOAD_QUESTIONS_SUCCESS;
 
   constructor(public payload: Question[]) {}
+}
+
+export class AddAnswer implements Action {
+  readonly type = ADD_ANSWER;
+
+  constructor(public payload: { answer; questionId; id }) {}
+}
+
+export class AddAnswerSuccess implements Action {
+  readonly type = ADD_ANSWER_SUCCESS;
 }
 
 export class LoadAnswers implements Action {

@@ -36,6 +36,18 @@ export class QuestionEffects {
   );
 
   @Effect()
+  addAnswer$ = this.actions$.pipe(
+    ofType<QuestionActions.AddAnswer>(QuestionActions.ADD_ANSWER),
+    switchMap(action => {
+      return this.questionService
+        .addAnswer(action.payload)
+        .pipe(
+          map(answer => new QuestionActions.LoadAnswers(answer.questionId))
+        );
+    })
+  );
+
+  @Effect()
   loadAnswers$ = this.actions$.pipe(
     ofType<QuestionActions.LoadAnswers>(QuestionActions.LOAD_ANSWERS),
     concatMap(action => {

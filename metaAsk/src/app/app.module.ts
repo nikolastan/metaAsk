@@ -4,42 +4,47 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule, routingComponents } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { QuestionsComponent } from "./components/questions/questions.component";
+import { MatMenuModule } from "@angular/material/menu";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./reducers";
-//import { QuestionModule } from "./modules/question/question.module";
 import { AddQuestionComponent } from "./components/add-question/add-question.component";
 import { EffectsModule } from "@ngrx/effects";
 import { effects } from "./effects";
 import { HttpClientModule } from "@angular/common/http";
 import { AnswersComponent } from "./components/answers/answers.component";
+import { AddAnswerComponent } from "./components/add-answer/add-answer.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionsComponent,
     AddQuestionComponent,
-    AnswersComponent
+    AnswersComponent,
+    AddAnswerComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatMenuModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatListModule,
-    //QuestionModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({
