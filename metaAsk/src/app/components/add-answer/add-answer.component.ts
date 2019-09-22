@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 import { AppState } from "src/app/app.state";
 import { FormControl, Validators } from "@angular/forms";
 import { UUID } from "angular2-uuid";
-import * as QuestionActions from "../../actions/actions";
+import * as AnswerActions from "../../actions/answerActions";
 
 @Component({
   selector: "app-add-answer",
@@ -32,6 +32,6 @@ export class AddAnswerComponent implements OnInit {
       questionId: questionId,
       id: id
     };
-    this.store.dispatch(new QuestionActions.AddAnswer(payload));
+    this.store.dispatch(new AnswerActions.AddAnswer(payload));
   }
 }

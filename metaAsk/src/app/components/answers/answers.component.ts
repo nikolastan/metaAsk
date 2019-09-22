@@ -2,9 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { Answer } from "src/app/models/answer.model";
 import { Store, createSelector, select } from "@ngrx/store";
-import * as QuestionActions from "../../actions/actions";
-import { selectAllAnswers } from "src/app/reducers/";
-import { State } from "src/app/reducers";
+import * as AnswerActions from "../../actions/answerActions";
+import { selectAllAnswers, State } from "src/app/reducers/";
 import { map, filter, reduce } from "rxjs/operators";
 
 @Component({
@@ -21,7 +20,7 @@ export class AnswersComponent implements OnInit {
 
   ngOnInit() {
     this.answers$ = this.store.select(selectAllAnswers);
-    this.store.dispatch(new QuestionActions.LoadAnswers(this.questionId));
+    this.store.dispatch(new AnswerActions.LoadAnswers(this.questionId));
   }
 
   markBestAnswer(answerId) {
@@ -61,7 +60,7 @@ export class AnswersComponent implements OnInit {
       prev: prevBest,
       next: nextBest
     };
-    this.store.dispatch(new QuestionActions.MarkBestAnswer(payload));
+    this.store.dispatch(new AnswerActions.MarkBestAnswer(payload));
   }
 
   answerSpecific(answerId) {

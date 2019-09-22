@@ -4,7 +4,7 @@ import { AppState } from "src/app/app.state";
 /* import { Question } from "src/app/models/question.model"; */
 import { UUID } from "angular2-uuid";
 import { FormControl, Validators } from "@angular/forms";
-import * as QuestionActions from "../../actions/actions";
+import * as QuestionActions from "../../actions/questionActions";
 
 @Component({
   selector: "app-add-question",

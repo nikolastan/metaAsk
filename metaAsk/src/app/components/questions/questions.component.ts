@@ -5,7 +5,7 @@ import { Question } from "src/app/models/question.model";
 import { AppState } from "src/app/app.state";
 import { Observable } from "rxjs";
 import { selectAllQuestions, State } from "src/app/reducers";
-import * as QuestionActions from "../../actions/actions";
+import * as QuestionActions from "../../actions/questionActions";
 
 @Component({
   selector: "app-questions",

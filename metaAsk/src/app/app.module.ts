@@ -45,7 +45,8 @@ import { AddAnswerComponent } from "./components/add-answer/add-answer.component
     ReactiveFormsModule,
     HttpClientModule,
     MatListModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forFeature("state", reducers),
+    StoreModule.forRoot({}),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

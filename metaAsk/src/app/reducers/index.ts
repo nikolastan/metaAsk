@@ -3,33 +3,45 @@ import {
   createFeatureSelector,
   ActionReducerMap
 } from "@ngrx/store";
-import * as Reducers from "./main-reducer";
+import * as QuestionReducer from "./question-reducer";
+import * as AnswerReducer from "./answer-reducer";
+import * as AuthReducer from "./auth-reducer";
 import { AppState } from "../app.state";
 
-export interface State {
-  state: AppState;
+export const initialState = {
+  questions: QuestionReducer.questionInitialState,
+  answers: AnswerReducer.answerInitialState,
+  auth: AuthReducer.authInitialState
+};
+
+export interface State extends AppState {
+  questions: QuestionReducer.QuestionState;
+  answers: AnswerReducer.AnswerState;
+  auth: AuthReducer.AuthState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  state: Reducers.MainReducer
+  questions: QuestionReducer.QuestionReducer,
+  answers: AnswerReducer.AnswerReducer,
+  auth: AuthReducer.AuthReducer
 };
 
-export const selectStateModule = createFeatureSelector<AppState>("state");
+export const selectStateModule = createFeatureSelector<State>("state");
 
 export const selectQuestionState = createSelector(
   selectStateModule,
-  Reducers.selectQuestionState
+  QuestionReducer.selectQuestionState
 );
 export const selectAnswerState = createSelector(
   selectStateModule,
-  Reducers.selectAnswerState
+  AnswerReducer.selectAnswerState
 );
 
 export const selectAllQuestions = createSelector(
   selectQuestionState,
-  Reducers.selectAllQuestions
+  QuestionReducer.selectAllQuestions
 );
 export const selectAllAnswers = createSelector(
   selectAnswerState,
-  Reducers.selectAllAnswers
+  AnswerReducer.selectAllAnswers
 );

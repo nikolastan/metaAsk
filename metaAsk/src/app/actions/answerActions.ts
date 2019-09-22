@@ -1,13 +1,7 @@
 import { Action } from "@ngrx/store";
-import { Question } from "../models/question.model";
 import { Answer } from "../models/answer.model";
 import { Update } from "@ngrx/entity";
 
-export const ADD_QUESTION = "[QUESTION] Add";
-export const ADD_QUESTION_SUCCESS = "[QUESTION] Add_Success";
-export const REMOVE_QUESTION = "[QUESTION] Remove";
-export const LOAD_QUESTIONS = "[QUESTIONS] Load";
-export const LOAD_QUESTIONS_SUCCESS = "[QUESTIONS] Load_Success";
 export const ADD_ANSWER = "[ANSWER] Add";
 export const ADD_ANSWER_SUCCESS = "[ANSWER] Add_Success";
 export const LOAD_ANSWERS = "[ANSWERS] Load";
@@ -16,30 +10,6 @@ export const MARK_BEST_ANSWER = "[ANSWER] Mark_Best";
 export const UPDATE_ANSWER = "[ANSWER] Update";
 export const UPDATE_ANSWERS = "[ANSWERS] Update";
 export const UPDATE_ANSWERS_SUCCESS = "[ANSWERS] Update_Success";
-
-export class AddQuestion implements Action {
-  readonly type = ADD_QUESTION;
-
-  constructor(public payload: { name; title; content; id }) {}
-}
-
-export class RemoveQuestion implements Action {
-  readonly type = REMOVE_QUESTION;
-
-  constructor(public payload: number) {}
-}
-
-export class LoadQuestions implements Action {
-  readonly type = LOAD_QUESTIONS;
-
-  constructor() {}
-}
-
-export class LoadQuestionsSuccess implements Action {
-  readonly type = LOAD_QUESTIONS_SUCCESS;
-
-  constructor(public payload: Question[]) {}
-}
 
 export class AddAnswer implements Action {
   readonly type = ADD_ANSWER;
@@ -81,11 +51,7 @@ export class UpdateAnswer implements Action {
   constructor(public payload: Answer) {}
 }
 
-export type Actions =
-  | AddQuestion
-  | RemoveQuestion
-  | LoadQuestions
-  | LoadQuestionsSuccess
+export type AnswerActions =
   | LoadAnswers
   | LoadAnswersSuccess
   | MarkBestAnswer
