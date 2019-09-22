@@ -3,7 +3,7 @@ import {
   createFeatureSelector,
   ActionReducerMap
 } from "@ngrx/store";
-import * as Reducers from "./reducer";
+import * as Reducers from "./main-reducer";
 import { AppState } from "../app.state";
 
 export interface State {
@@ -11,7 +11,7 @@ export interface State {
 }
 
 export const reducers: ActionReducerMap<State> = {
-  state: Reducers.Reducer
+  state: Reducers.MainReducer
 };
 
 export const selectStateModule = createFeatureSelector<AppState>("state");

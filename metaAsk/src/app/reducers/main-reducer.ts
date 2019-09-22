@@ -22,7 +22,7 @@ const initialState = {
   answers: answerInitialState
 };
 
-export function Reducer(
+export function MainReducer(
   state: AppState = initialState,
   action: Actions.Actions
 ) {
@@ -53,6 +53,11 @@ export function Reducer(
       return {
         ...state,
         answers: answerAdapter.addMany(action.payload, state.answers)
+      };
+    case Actions.UPDATE_ANSWERS:
+      return {
+        ...state,
+        answers: answerAdapter.updateMany(action.payload, state.answers)
       };
     default:
       return state;

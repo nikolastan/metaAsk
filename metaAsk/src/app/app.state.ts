@@ -1,4 +1,4 @@
-import { QuestionState, AnswerState } from "./reducers/reducer";
+import { QuestionState, AnswerState } from "./reducers/main-reducer";
 
 export interface AppState {
   questions: QuestionState;

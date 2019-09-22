@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Question } from "../models/question.model";
 import { Answer } from "../models/answer.model";
+import { map, switchMap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
@@ -33,11 +34,25 @@ export class QuestionService {
     );
   }
 
+  updateAnswer(payload: any): Observable<Answer> {
+    const answer: Answer = new Answer(
+      payload.questionId,
+      payload.answer,
+      payload.id,
+      payload.bestAnswer
+    );
+    return this.http.put<Answer>(
+      `http://localhost:3000/answers/${answer.id}`,
+      answer
+    );
+  }
+
   addAnswer(payload: any): Observable<Answer> {
     const answer: Answer = new Answer(
       payload.questionId,
       payload.answer,
-      payload.id
+      payload.id,
+      payload.bestAnswer
     );
     return this.http.post<Answer>("http://localhost:3000/answers", answer);
   }
