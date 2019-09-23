@@ -1,10 +1,16 @@
 {
   "questions": [
     {
-      "name": "Nikola",
+      "email": "test@test.com",
       "title": "How to set production environment variable in React app? (hosted on Netlify)",
       "content": "I was wondering how I can set environment variable in React to hid my API key?\n\nI am hosting the app on Netlify so I am not sure if that matters. Thanks in advance!",
       "id": "5e79acac-a149-37ae-3c0c-a0faec5ceb08"
+    },
+    {
+      "email": "nikola@nikola.com",
+      "title": "Question Example 12345?",
+      "content": "Questions further explanation 1234561231231231451231",
+      "id": "60b502c9-b873-b331-cdea-b4b2b00f1f13"
     }
   ],
   "answers": [
@@ -25,6 +31,24 @@
       "answer": "Test test test test test",
       "id": "59d032c1-4318-d311-1fa8-333408ba7dbc",
       "bestAnswer": false
+    },
+    {
+      "questionId": "60b502c9-b873-b331-cdea-b4b2b00f1f13",
+      "answer": "test test test 123451",
+      "id": "72a2154a-5502-bca4-4141-5fe16b751c9d",
+      "bestAnswer": false
+    }
+  ],
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$.4H5aEzCtShCOoSkpqvpf.YhUxQ9GmZjRPiwLIBFvcK4OC72MErCm",
+      "id": 1
+    },
+    {
+      "email": "nikola@nikola.com",
+      "password": "$2a$10$Fz6I9pO06YFZkB.jqxwcHug0EGHRkbg.tSOlCKH5s.sOuwl74mHau",
+      "id": 2
     }
   ]
 }

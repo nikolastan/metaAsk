@@ -23,7 +23,7 @@ export class QuestionService {
 
   addQuestion(payload: any): Observable<Question> {
     const question: Question = new Question(
-      payload.name,
+      payload.email,
       payload.title,
       payload.content,
       payload.id

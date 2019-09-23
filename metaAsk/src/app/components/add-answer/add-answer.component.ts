@@ -30,7 +30,8 @@ export class AddAnswerComponent implements OnInit {
     const payload = {
       answer: answer,
       questionId: questionId,
-      id: id
+      id: id,
+      bestAnswer: false
     };
     this.store.dispatch(new AnswerActions.AddAnswer(payload));
   }

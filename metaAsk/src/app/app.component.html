@@ -4,16 +4,14 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <button mat-button [matMenuTriggerFor]="menu">Info about the developer!</button>
-  <mat-menu #menu="matMenu">
-    <a mat-menu-item routerLink="/about">About</a>
-    <a mat-menu-item routerLink="/contact-info">Contact-info</a>
-  </mat-menu>
-  <router-outlet></router-outlet>
-  <button *ngIf="isAddVisible; else elseBlock" (click)="toggleAddVisible()" mat-raised-button>Hide
-    Form</button>
-  <ng-template #elseBlock><button (click)="toggleAddVisible()" mat-raised-button>Add a new question...</button>
-  </ng-template>
+  <router-outlet (activate)="getElement($event)"></router-outlet>
+  <div *ngIf="userLogged">
+    <button *ngIf="isAddVisible; else elseBlock" (click)="toggleAddVisible()" mat-raised-button>Hide
+      Form</button>
+    <ng-template #elseBlock><button (click)="toggleAddVisible()" mat-raised-button>Add a new question...</button>
+    </ng-template>
+    <app-add-question [isAuthenticated]="userLogged" *ngIf="isAddVisible" (formSubmit)="getFormSubmit($event)">
+    </app-add-question>
+  </div>
 </div>
-<app-add-question *ngIf="isAddVisible" (formSubmit)="getFormSubmit($event)"></app-add-question>
-<app-questions></app-questions>
+<app-questions [isAuthenticated]="userLogged"></app-questions>

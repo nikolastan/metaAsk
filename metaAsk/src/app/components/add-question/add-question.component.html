@@ -9,11 +9,7 @@
         placeholder="Further explanation" name="content" [(ngModel)]="content" [formControl]="contentInp"
         required></textarea>
     </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Your name" name="name" [(ngModel)]="name">
-    </mat-form-field>
-    <button mat-raised-button [disabled]="titleInp.invalid || contentInp.invalid"
-      (click)="addQuestion(name, title, content)" type="submit">Submit</button>
+    <button mat-raised-button [disabled]="titleInp.invalid || contentInp.invalid" (click)="addQuestion(title, content)"
+      type="submit">Submit</button>
   </form>
 </div>

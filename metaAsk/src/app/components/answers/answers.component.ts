@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { Answer } from "src/app/models/answer.model";
-import { Store, createSelector, select } from "@ngrx/store";
+import { Store } from "@ngrx/store";
 import * as AnswerActions from "../../actions/answerActions";
 import { selectAllAnswers, State } from "src/app/reducers/";
-import { map, filter, reduce } from "rxjs/operators";
+import { map } from "rxjs/operators";
+import { selectAuthState } from "src/app/reducers";
+import { AuthState } from "src/app/reducers/auth-reducer";
 
 @Component({
   selector: "app-answers",
@@ -14,13 +16,30 @@ import { map, filter, reduce } from "rxjs/operators";
 export class AnswersComponent implements OnInit {
   @Input()
   questionId: string;
+  @Input()
+  questionUser: string;
   answers$: Observable<Answer[]>;
 
-  constructor(private store: Store<State>) {}
+  authState: Observable<AuthState>;
+  @Input()
+  isAuthenticated: false;
+  @Input()
+  user = null;
+
+  constructor(private store: Store<State>) {
+    this.authState = this.store.select(selectAuthState);
+  }
 
   ngOnInit() {
     this.answers$ = this.store.select(selectAllAnswers);
     this.store.dispatch(new AnswerActions.LoadAnswers(this.questionId));
+  }
+
+  ngOnChanges() {
+    this.authState.subscribe(state => {
+      this.user = state.user;
+    });
+    console.log(this.questionUser);
   }
 
   markBestAnswer(answerId) {

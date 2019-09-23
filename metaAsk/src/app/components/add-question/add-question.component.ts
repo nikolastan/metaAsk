@@ -5,6 +5,8 @@ import { AppState } from "src/app/app.state";
 import { UUID } from "angular2-uuid";
 import { FormControl, Validators } from "@angular/forms";
 import * as QuestionActions from "../../actions/questionActions";
+import { Observable } from "rxjs";
+import { selectAuthState } from "src/app/reducers";
 
 @Component({
   selector: "app-add-question",
@@ -13,12 +15,15 @@ import * as QuestionActions from "../../actions/questionActions";
 })
 export class AddQuestionComponent implements OnInit {
   @Input()
-  name: string;
-  @Input()
   title: string;
   @Input()
   content: string;
   @Output() formSubmit = new EventEmitter<boolean>();
+
+  authState: Observable<any>;
+  @Input()
+  isAuthenticated: false;
+  user = null;
 
   titleInp = new FormControl("", [
     Validators.required,
@@ -29,7 +34,9 @@ export class AddQuestionComponent implements OnInit {
     Validators.minLength(50)
   ]);
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>) {
+    this.authState = this.store.select(selectAuthState);
+  }
 
   onFormSubmit() {
     this.formSubmit.emit(true);
@@ -37,14 +44,20 @@ export class AddQuestionComponent implements OnInit {
 
   ngOnInit() {}
 
+  ngOnChanges() {
+    this.authState.subscribe(state => {
+      this.user = state.user;
+    });
+  }
+
   generateUUID() {
     return UUID.UUID();
   }
 
-  addQuestion(name, title, content) {
+  addQuestion(title, content) {
     const id = this.generateUUID();
     const payload = {
-      name: name,
+      email: this.user.email,
       title: title,
       content: content,
       id: id

@@ -5,7 +5,6 @@ import { switchMap, map, take, concatMap, mergeMap } from "rxjs/operators";
 
 import * as QuestionActions from "../actions/questionActions";
 import * as FromServices from "../services/question.service";
-import { forkJoin } from "rxjs";
 
 @Injectable()
 export class QuestionEffects {

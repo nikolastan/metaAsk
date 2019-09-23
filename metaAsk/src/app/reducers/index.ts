@@ -37,6 +37,11 @@ export const selectAnswerState = createSelector(
   AnswerReducer.selectAnswerState
 );
 
+export const selectAuthState = createSelector(
+  selectStateModule,
+  AuthReducer.selectAuthState
+);
+
 export const selectAllQuestions = createSelector(
   selectQuestionState,
   QuestionReducer.selectAllQuestions

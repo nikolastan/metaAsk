@@ -22,6 +22,9 @@ import { effects } from "./effects";
 import { HttpClientModule } from "@angular/common/http";
 import { AnswersComponent } from "./components/answers/answers.component";
 import { AddAnswerComponent } from "./components/add-answer/add-answer.component";
+import { LoginComponent } from "./components/login/login.component";
+import { SignupComponent } from "./components/signup/signup.component";
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { AddAnswerComponent } from "./components/add-answer/add-answer.component
     AddQuestionComponent,
     AnswersComponent,
     AddAnswerComponent,
-    routingComponents
+    routingComponents,
+    LoginComponent,
+    SignupComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

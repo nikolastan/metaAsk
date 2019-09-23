@@ -9,9 +9,17 @@ export class AppComponent {
   title = "metaAsk";
   isAddVisible: boolean;
   formSubmit: boolean;
+  userLogged: boolean;
 
   getFormSubmit(formSubmit) {
     if (formSubmit) this.isAddVisible = false;
+  }
+
+  getElement(elementRef) {
+    if (elementRef.userLogged)
+      elementRef.userLogged.subscribe(event => {
+        this.userLogged = event;
+      });
   }
 
   ngOnInit() {

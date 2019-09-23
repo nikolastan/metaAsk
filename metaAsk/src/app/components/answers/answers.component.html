@@ -7,8 +7,11 @@
       <ng-container>
         {{answer.answer}}
       </ng-container>
-      <button mat-raised-button *ngIf="!isBestAnswer(answer.id)" (click)="markBestAnswer(answer.id)">Mark
-        as Best Answer!</button>
+      <div *ngIf="user!=null">
+        <button mat-raised-button *ngIf="!isBestAnswer(answer.id) && questionUser==user.email"
+          (click)="markBestAnswer(answer.id)">Mark
+          as Best Answer!</button>
+      </div>
     </mat-list-item>
   </mat-list>
 </div>

@@ -1,0 +1,13 @@
+<div>
+  <div>
+    <div *ngIf="isAuthenticated; then doSomething; else doSomethingElse;"></div>
+    <ng-template #doSomething>
+      <p>You logged in <em>{{user.email}}!</em></p>
+      <button mat-raised-button (click)="logOut()">Log out</button>
+    </ng-template>
+    <ng-template #doSomethingElse>
+      <a mat-raised-button [routerLink]="['/log-in']">Log in</a>
+      <a mat-raised-button [routerLink]="['/sign-up']">Sign up</a>
+    </ng-template>
+  </div>
+</div>

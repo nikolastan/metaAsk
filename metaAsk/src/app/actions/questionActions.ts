@@ -12,7 +12,7 @@ export const LOAD_QUESTIONS_SUCCESS = "[QUESTIONS] Load_Success";
 export class AddQuestion implements Action {
   readonly type = ADD_QUESTION;
 
-  constructor(public payload: { name; title; content; id }) {}
+  constructor(public payload: { email; title; content; id }) {}
 }
 
 export class RemoveQuestion implements Action {

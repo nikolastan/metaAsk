@@ -18,7 +18,7 @@ export function QuestionReducer(
   switch (action.type) {
     case Actions.ADD_QUESTION: {
       const question: Question = new Question(
-        action.payload.name,
+        action.payload.email,
         action.payload.title,
         action.payload.content,
         action.payload.id

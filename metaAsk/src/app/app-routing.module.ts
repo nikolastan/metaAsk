@@ -1,16 +1,21 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AboutComponent } from "./components/about/about.component";
-import { ContactInfoComponent } from "./components/contact-info/contact-info.component";
+import { LoginComponent } from "./components/login/login.component";
+import { SignupComponent } from "./components/signup/signup.component";
+import { LandingComponent } from "./components/landing/landing.component";
 
 const routes: Routes = [
   {
-    path: "about",
-    component: AboutComponent
+    path: "log-in",
+    component: LoginComponent
   },
   {
-    path: "contact-info",
-    component: ContactInfoComponent
+    path: "sign-up",
+    component: SignupComponent
+  },
+  {
+    path: "",
+    component: LandingComponent
   }
 ];
 
@@ -20,4 +25,8 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-export const routingComponents = [AboutComponent, ContactInfoComponent];
+export const routingComponents = [
+  LoginComponent,
+  SignupComponent,
+  LandingComponent
+];
