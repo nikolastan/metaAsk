@@ -48,7 +48,7 @@ export class MarkBestAnswer implements Action {
 export class UpdateAnswer implements Action {
   readonly type = UPDATE_ANSWER;
 
-  constructor(public payload: Answer) {}
+  constructor(public payload: Update<Answer>) {}
 }
 
 export type AnswerActions =

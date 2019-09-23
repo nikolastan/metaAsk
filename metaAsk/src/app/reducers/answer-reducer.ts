@@ -20,6 +20,8 @@ export function AnswerReducer(
       return answerAdapter.addMany(action.payload, state);
     case Actions.UPDATE_ANSWERS:
       return answerAdapter.updateMany(action.payload, state);
+    case Actions.UPDATE_ANSWER:
+      return answerAdapter.updateOne(action.payload, state);
     default:
       return state;
   }

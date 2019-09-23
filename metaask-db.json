@@ -18,13 +18,13 @@
       "questionId": "5e79acac-a149-37ae-3c0c-a0faec5ceb08",
       "answer": "Lorem ipsum dolor sit amet, consectetur",
       "id": "5229c8e4-2335-7758-df80-db9bfa21e25c",
-      "bestAnswer": false
+      "bestAnswer": true
     },
     {
       "questionId": "5e79acac-a149-37ae-3c0c-a0faec5ceb08",
       "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "id": "b8d4943b-f252-fe2e-3644-81bbb5bfc20b",
-      "bestAnswer": true
+      "bestAnswer": false
     },
     {
       "questionId": "5e79acac-a149-37ae-3c0c-a0faec5ceb08",
@@ -36,6 +36,12 @@
       "questionId": "60b502c9-b873-b331-cdea-b4b2b00f1f13",
       "answer": "test test test 123451",
       "id": "72a2154a-5502-bca4-4141-5fe16b751c9d",
+      "bestAnswer": true
+    },
+    {
+      "questionId": "60b502c9-b873-b331-cdea-b4b2b00f1f13",
+      "answer": "odgasdasdasdasdadasdad",
+      "id": "99ae3c1b-d673-c517-4f6f-767f6bf8664c",
       "bestAnswer": false
     }
   ],

@@ -55,7 +55,9 @@ export class AnswersComponent implements OnInit {
           } else return answers;
         })
       )
-      .subscribe(answer => (prevBest = answer[0]));
+      .subscribe(answer => {
+        if (answer != null) prevBest = answer[0];
+      });
 
     if (prevBest) {
       var answer = new Answer(

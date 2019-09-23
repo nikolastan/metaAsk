@@ -25,39 +25,44 @@ export class AnswerEffects {
   );
 
   @Effect()
-  updateAnswer$ = this.actions$.pipe(
-    ofType<AnswerActions.UpdateAnswer>(AnswerActions.UPDATE_ANSWER),
-    switchMap(action => {
-      return this.answerService
-        .updateAnswer(action.payload)
-        .pipe(map(answer => new AnswerActions.LoadAnswers(answer.questionId)));
-    })
-  );
-
-  @Effect()
   markAnswer$ = this.actions$.pipe(
     ofType<AnswerActions.MarkBestAnswer>(AnswerActions.MARK_BEST_ANSWER),
     switchMap(action => {
-      return forkJoin(
-        this.answerService.updateAnswer(action.payload.prev),
-        this.answerService.updateAnswer(action.payload.next)
-      ).pipe(
-        map(
-          answers =>
-            new AnswerActions.UpdateAnswers(
-              answers.map(answer => {
-                return {
-                  id: answer.id,
-                  changes: {
-                    answer: answer.answer,
-                    bestAnswer: answer.bestAnswer,
-                    questionId: answer.questionId
-                  }
-                };
-              })
-            )
-        )
-      );
+      if (action.payload.prev != undefined)
+        return forkJoin(
+          this.answerService.updateAnswer(action.payload.prev),
+          this.answerService.updateAnswer(action.payload.next)
+        ).pipe(
+          map(
+            answers =>
+              new AnswerActions.UpdateAnswers(
+                answers.map(answer => {
+                  return {
+                    id: answer.id,
+                    changes: {
+                      answer: answer.answer,
+                      bestAnswer: answer.bestAnswer,
+                      questionId: answer.questionId
+                    }
+                  };
+                })
+              )
+          )
+        );
+      else
+        return this.answerService.updateAnswer(action.payload.next).pipe(
+          map(answer => {
+            const payload = {
+              id: answer.id,
+              changes: {
+                answer: answer.answer,
+                bestAnswer: answer.bestAnswer,
+                questionId: answer.questionId
+              }
+            };
+            return new AnswerActions.UpdateAnswer(payload);
+          })
+        );
     })
   );
 
